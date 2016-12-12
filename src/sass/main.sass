@@ -1,0 +1,263 @@
+// @SharryHong
+
+@import helper/variables
+@import base/normalize
+@import base/grid
+@import base/common
+@import base/typography
+@import module/button
+@import module/triangle
+
+@import page/index
+
+body
+	background-color: $base-bg
+
+.wrap
+	position: relative
+
+.page-header
+	position: fixed
+	z-index: 1000
+	top: 0
+	width: 100%
+	height: $header-height
+	line-height: $header-height
+	color: #fff
+	background-color: $main-color
+	box-shadow: 0 4px 8px rgba(0,0,0,.28)
+	h1
+		position: absolute
+		top: 0
+		left: 65px
+		@media #{$mq-s}
+			text-indent: -300px
+			transition: .3s ease-in-out
+	h2
+		text-align: center
+		a 
+			padding: 5px 10px
+
+.toggle-menu
+	position: fixed
+	z-index: 1010
+	width: $slidemenu-width
+	height: $header-height
+	line-height: $header-height
+	button
+		padding: 0 20px
+		vertical-align: middle
+	.fa-bars
+		font-size: 24px
+		color: #fff
+
+.page-nav
+	position: fixed
+	z-index: 1010
+	left: -$slidemenu-width
+	margin-top: $header-height
+	width: $slidemenu-width
+	height: 100vh - $header-height
+	@media (max-width: #{$mq-menu})
+		background: $base-bg
+	ul 
+		padding-left: 0
+	@media (min-width: #{$mq-menu})
+		transition: .3s ease-in-out
+		opacity: 1
+	@media (max-width: #{$mq-menu})
+		transition: .3s ease-in-out
+		transform: translateX(-$slidemenu-width)
+		opacity: 0
+.page-nav.sliding
+	transition: .3s ease-in-out
+	transform: translateX($slidemenu-width)
+	opacity: 1
+
+.side-container
+	padding: $base-padding
+.group-info
+	padding-left: $base-padding
+	border-bottom: 1px solid $base-line
+	h2
+		color: #333
+		font-size: 1rem
+	.date
+		margin-top: 0
+		font-size: $small-font
+.gnb-scroll
+	overflow-y: auto
+	height: 100vh - 6*$header-height
+.gnb-menu
+	a 
+		display: inline-block
+		padding: 10px 15px
+		width: 100%
+	.on
+		font-weight: bold
+		color: $sky-color
+		background-color: $base-line
+	.fa
+		margin-right: 15px
+.gnb-footer
+	position: absolute
+	bottom: 0
+	width: 100%
+	padding: $base-padding
+	padding-bottom: 0
+	font-size: $small-font
+	
+	button
+		display: block
+		width: 100%
+		padding: 5px
+		color: inherit
+		border: 1px solid $base-line
+		border-radius: $thin-border-radius
+		&:hover
+			color: #aaa
+			border: 1px solid #aaa
+	.mode
+		text-align: center
+	li
+		display: inline-block
+	li+li:before
+		display: inline-block
+		content: '|'
+		padding: 0 7px 0 5px
+		font-size: 10px
+	a
+		&:hover
+			text-decoration: underline
+
+.main-article
+	padding-top: $header-height
+	.container
+		@media #{$mq-l}
+			margin-left: auto
+			margin-right: auto
+			max-width: 815px
+
+.form-title
+	margin-top: 1rem
+	margin-bottom: 0.63rem
+	padding-left: 0.63rem
+	font-size: 1rem
+	font-weight: normal
+	color: $gray-color
+
+.fa-question-circle
+	vertical-align: middle
+	color: $sub-color
+
+.order-menu
+	color: $gray-color
+	ul 
+		%clearfix
+		margin: 0 $base-padding
+		padding: 0
+	li
+		float: left
+		button 
+			display: inline-block
+			padding: 5px 6px 8px 6px
+			color: inherit
+			cursor: pointer
+
+	.on
+		color: $sky-color
+		font-weight: bold
+		&:after
+			content: ''
+			display: block
+			width: 100%
+			height: 3px
+			background: $sky-color
+
+.boxes
+	width: 100%
+	padding: $base-padding
+	background-color: #fff
+	border: 1px solid $base-line
+	h3
+		font-size: 0.88rem
+		font-weight: bold
+		margin-bottom: 7px
+	h4
+		font-size: 1rem
+
+.ask-box
+	@extend %clearfix
+	margin-bottom: 1rem
+	table
+		width: 100%
+		margin-bottom: 0.75rem
+	td
+		&:first-child
+			padding-right: 10px
+			width: 20px
+			text-align: center
+			vertical-align: top
+		&:last-child
+			background: $light-gray-color
+			input, textarea
+				width: 100%
+				font-size: 0.75rem
+	button
+		float: right
+
+.question-box
+	display: inline-block
+	width: 100%
+	height: 100%
+	position: relative
+	padding: 0
+	border-top: none
+	&:first-of-type
+		border-top: 1px solid $base-line
+	> a
+		display: inline-block
+		width: 100%
+		height: 100%
+		padding: $base-padding
+		&:hover
+			transition: .3s ease-in-out
+			background: $box-hover-color
+	.upright
+		position: absolute
+		top: $base-padding
+		right: $base-padding
+		@extend %small
+		.fa
+			@extend %small
+		> span+span::before
+			display: inline-block
+			content: '|'
+			padding: 0 5px
+			color: $gray-color
+
+.sub-page
+	margin-top: $base-padding
+	h4
+		margin-bottom: $base-padding
+	.form-title
+		padding-left: 0
+
+.comment-box
+	margin: 0
+	padding: $base-padding
+	background-color: $light-gray-color
+	border-bottom: 2px dotted $base-line
+	&:last-of-type
+		border-bottom: none
+	li
+		position: relative
+		padding-right: 30px
+	.upright
+		@extend %small
+		position: absolute
+		top: 0
+		right: 0
+		.fa
+			@extend %small
+		
