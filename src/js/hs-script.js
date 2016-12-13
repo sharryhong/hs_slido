@@ -31,10 +31,15 @@
 		var objThis = this;
 		// 햄버거 버튼 클릭시 toggleMenu메소드 실행 
 		this.$toggleBtn.on('click', function(){
-				objThis.toggleMenu();
-				if(window.innerWidth < objThis.$deskWidthPx){
-					objThis.$mainCover.toggleClass('menu-cover');
-				}
+			objThis.toggleMenu();
+			if(window.innerWidth < objThis.$deskWidthPx){
+				objThis.$mainCover.toggleClass('menu-cover');
+			}
+		});
+		// cover클릭시 메뉴 닫히고 cover 없애기 
+		this.$mainCover.on('click', function(){
+			objThis.toggleMenu();
+			objThis.$mainCover.removeClass('menu-cover');
 		});
 		if(window.innerWidth > objThis.$deskWidthPx && objThis.$deskWidth == false){
 			objThis.toggleMenu();
